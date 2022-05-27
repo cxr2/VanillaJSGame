@@ -249,7 +249,6 @@ const ks_player1_3_full_roll = document.querySelector(
 );
 const ks_player1_3_nudge = document.querySelector("#ks-player1-3-nudge");
 
-/// Create a random number generator that selects a number between 0 and 9
 ks_player1_3_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
@@ -277,5 +276,140 @@ ks_player1_all_full_roll.addEventListener("click", () => {
   slider_1_2.moveToIdx(ksPlayer1Index2, true);
   const ksPlayer1Index3 = SingleRandomNumberGenerator();
   slider_1_3.moveToIdx(ksPlayer1Index3, true);
+  console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
+});
+
+//**  Generate Player 2 Slides **/
+const player2_slider1 = document.getElementById("ks-player2-1");
+randomSlideGenerator(numbers, player2_slider1);
+
+const player2_slider2 = document.getElementById("ks-player2-2");
+randomSlideGenerator(numbers, player2_slider2);
+
+const player2_slider3 = document.getElementById("ks-player2-3");
+randomSlideGenerator(numbers, player2_slider3);
+
+// ***** Player 2 Sliders
+/// create the slider 1_1
+const slider_2_1 = new keenSlider("#ks-player2-1", {
+  loop: true,
+  created: () => {
+    console.log("created");
+  },
+  slides: {
+    perView: 1,
+  },
+  drag: false,
+  // selector: null,
+  vertical: true,
+  // initial: 5,
+  // range: {
+  //   min: 0,
+  //   max: 9,
+  // },
+});
+
+const slider_2_2 = new keenSlider("#ks-player2-2", {
+  loop: true,
+  created: () => {
+    console.log("created");
+  },
+  slides: {
+    perView: 1,
+  },
+  drag: false,
+  // selector: null,
+  vertical: true,
+  // initial: 5,
+  // range: {
+  //   min: 0,
+  //   max: 9,
+  // },
+});
+
+const slider_2_3 = new keenSlider("#ks-player2-3", {
+  loop: true,
+  created: () => {
+    console.log("created");
+  },
+  slides: {
+    perView: 1,
+  },
+  drag: false,
+  // selector: null,
+  vertical: true,
+  // initial: 5,
+  // range: {
+  //   min: 0,
+  //   max: 9,
+  // },
+});
+
+// ***** Player 2 Controls
+// **** Player 2 Slider 1 buttons
+const ks_player2_1_full_roll = document.querySelector(
+  "#ks-player2-1-full-roll"
+);
+const ks_player2_1_nudge = document.querySelector("#ks-player2-1-nudge");
+
+ks_player2_1_full_roll.addEventListener("click", () => {
+  let ksPlayer1Index = 0;
+  ksPlayer1Index = SingleRandomNumberGenerator();
+  slider_2_1.moveToIdx(ksPlayer1Index, true);
+});
+
+ks_player2_1_nudge.addEventListener("click", () => {
+  slider_2_1.next();
+});
+
+// **** Player 2 Slider 2 buttons
+const ks_player2_2_full_roll = document.querySelector(
+  "#ks-player2-2-full-roll"
+);
+const ks_player2_2_nudge = document.querySelector("#ks-player2-2-nudge");
+
+ks_player2_2_full_roll.addEventListener("click", () => {
+  let ksPlayer1Index = 0;
+  ksPlayer1Index = SingleRandomNumberGenerator();
+  slider_2_2.moveToIdx(ksPlayer1Index, true);
+});
+
+ks_player2_2_nudge.addEventListener("click", () => {
+  slider_2_2.next();
+});
+
+// **** Player 2 Slider 3 buttons
+// Get the ks-player1-2-full-roll element
+const ks_player2_3_full_roll = document.querySelector(
+  "#ks-player2-3-full-roll"
+);
+const ks_player2_3_nudge = document.querySelector("#ks-player2-3-nudge");
+
+ks_player2_3_full_roll.addEventListener("click", () => {
+  let ksPlayer1Index = 0;
+  ksPlayer1Index = SingleRandomNumberGenerator();
+  slider_2_3.moveToIdx(ksPlayer1Index, true);
+  console.log(
+    "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
+    ksPlayer1Index
+  );
+});
+
+ks_player2_3_nudge.addEventListener("click", () => {
+  slider_2_3.next();
+});
+
+// **** Player 2 Roll All Button
+const ks_player2_all_full_roll = document.querySelector(
+  "#ks-player2-all-full-roll"
+);
+
+ks_player2_all_full_roll.addEventListener("click", () => {
+  const ksPlayer1Index1 = SingleRandomNumberGenerator();
+  slider_2_1.moveToIdx(ksPlayer1Index1, true);
+  const ksPlayer1Index2 = SingleRandomNumberGenerator();
+  slider_2_2.moveToIdx(ksPlayer1Index2, true);
+  const ksPlayer1Index3 = SingleRandomNumberGenerator();
+  slider_2_3.moveToIdx(ksPlayer1Index3, true);
   console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
 });
