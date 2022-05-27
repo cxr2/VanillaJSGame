@@ -77,6 +77,9 @@ button {
   text-align: center;
 }
 
+.player-area {
+  display: flex;
+}
 
 [class^="number-slide"],
 [class*=" number-slide"] {

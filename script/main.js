@@ -20,11 +20,8 @@ function randomArrGenerator(min = 0, max = 9, length = 3) {
   return arr;
 }
 
-console.log(randomArrGenerator());
-
-("use strict");
-
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+// const shuffled = shuffle(numbers);
 document.querySelector(".info").textContent = numbers.join(" ");
 
 const doors = document.querySelectorAll(".door");
@@ -109,10 +106,38 @@ function shuffle([...arr]) {
   }
   return arr;
 }
-
-// console.log(shuffle(numbers));
+const shuffled = shuffle(numbers);
 
 init();
+
+// Generate slider slides and appends them to target element programmatically
+function slideGenerator(content = numbers, targetElement) {
+  let slideNumber = 1;
+  const frag = new DocumentFragment();
+  for (const item of content) {
+    const div = document.createElement("div");
+    const className1 = `keen-slider__slide`;
+    div.classList.add(className1);
+    const className2 = `number-slide${slideNumber}`;
+    div.classList.add(className2);
+    div.textContent = item;
+    frag.appendChild(div);
+    slideNumber += 1;
+  }
+  targetElement.appendChild(frag);
+}
+
+function randomSlideGenerator(array = numbers, targetElement) {
+  const shuffled = shuffle(array);
+  slideGenerator(shuffled, targetElement);
+}
+
+// Create slider_1_2 slides
+const player1_slider2 = document.getElementById("ks-player1-2");
+randomSlideGenerator(numbers, player1_slider2);
+
+const player1_slider3 = document.getElementById("ks-player1-3");
+randomSlideGenerator(numbers, player1_slider3);
 
 /// create the slider 1_1
 const slider_1_1 = new keenSlider("#ks-player1-1", {
@@ -171,6 +196,7 @@ const slider_1_3 = new keenSlider("#ks-player1-3", {
 
 console.dir(slider_1_1);
 
+// **** Player 1 Slider 1 buttons
 // Get the ks-player1-1-full-roll element
 const ks_player1_1_full_roll = document.querySelector(
   "#ks-player1-1-full-roll"
@@ -191,4 +217,65 @@ ks_player1_1_full_roll.addEventListener("click", () => {
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_1_nudge.addEventListener("click", () => {
   slider_1_1.next();
+});
+
+// **** Player 1 Slider 2 buttons
+// Get the ks-player1-2-full-roll element
+const ks_player1_2_full_roll = document.querySelector(
+  "#ks-player1-2-full-roll"
+);
+const ks_player1_2_nudge = document.querySelector("#ks-player1-2-nudge");
+
+/// Create a random number generator that selects a number between 0 and 9
+ks_player1_2_full_roll.addEventListener("click", () => {
+  let ksPlayer1Index = 0;
+  ksPlayer1Index = SingleRandomNumberGenerator();
+  slider_1_2.moveToIdx(ksPlayer1Index, true);
+  console.log(
+    "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
+    ksPlayer1Index
+  );
+});
+
+// Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
+ks_player1_2_nudge.addEventListener("click", () => {
+  slider_1_2.next();
+});
+
+// **** Player 1 Slider 3 buttons
+// Get the ks-player1-2-full-roll element
+const ks_player1_3_full_roll = document.querySelector(
+  "#ks-player1-3-full-roll"
+);
+const ks_player1_3_nudge = document.querySelector("#ks-player1-3-nudge");
+
+/// Create a random number generator that selects a number between 0 and 9
+ks_player1_3_full_roll.addEventListener("click", () => {
+  let ksPlayer1Index = 0;
+  ksPlayer1Index = SingleRandomNumberGenerator();
+  slider_1_3.moveToIdx(ksPlayer1Index, true);
+  console.log(
+    "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
+    ksPlayer1Index
+  );
+});
+
+// Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
+ks_player1_3_nudge.addEventListener("click", () => {
+  slider_1_3.next();
+});
+
+// **** Player 1 Roll All Button
+const ks_player1_all_full_roll = document.querySelector(
+  "#ks-player1-all-full-roll"
+);
+
+ks_player1_all_full_roll.addEventListener("click", () => {
+  const ksPlayer1Index1 = SingleRandomNumberGenerator();
+  slider_1_1.moveToIdx(ksPlayer1Index1, true);
+  const ksPlayer1Index2 = SingleRandomNumberGenerator();
+  slider_1_2.moveToIdx(ksPlayer1Index2, true);
+  const ksPlayer1Index3 = SingleRandomNumberGenerator();
+  slider_1_3.moveToIdx(ksPlayer1Index3, true);
+  console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
 });
