@@ -61,6 +61,11 @@ body {
   margin: 1rem 0 2rem 0;
 }
 
+.btn-danger {
+  height: 50px;
+  width: 100px;
+}
+
 button {
   cursor: pointer;
 
