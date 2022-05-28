@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WiP</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@6.6.14/keen-slider.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/keen-slider@6.6.14/keen-slider.min.css"
+    />
     <link rel="stylesheet" href="src/styles.css" />
     <script src="script\main.js" type="module"></script>
     <link
@@ -16,124 +19,157 @@
     />
   </head>
   <body>
-    <div class="p-5 m-3">
-      <h1 class="text-center">Unnamed Game</h1>
+<div class="p-5 m-4">
+      <h1 class="text-center">Number Slots</h1>
       <div class="row justify-content-center">
-      <div class="instructions col-md-auto align-items-center"><ol class="rules p-4"><li>Players take turns
-      </li><li>Something happens
-      </li><li>Something else happens
-      </li></ol>
-    </div></div>
+        <div class="instructions col-md-auto">
+          <ol class="rules p-4">
+            <li>Spin to find a random number</li>
+            <li>Something happens</li>
+            <li>Something else happens</li>
+          </ol>
+        </div>
+      </div>
+    </section>
     <div id="app">
-  <div class="doors">
-    <div class="door">
-      <div class="boxes">
-        <!-- <div class="box">?</div> -->
+      <div class="doors">
+        <div class="door">
+          <div class="boxes">
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
+
+        <div class="door">
+          <div class="boxes">
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
+
+        <div class="door">
+          <div class="boxes">
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button id="spinner">Spin</button>
+        <button id="reseter">Reset</button>
+      </div>
+
+      <p class="info"></p>
+    </div>
+  
+    <div class="row justify-content-center">
+              <div class='col-6'><h2 class="player1 text-center py-4">Player 1</h2></div>
+            <div class='col-6'><h2 class="player1 text-center py-4">Player 2</h2></div></div>
+        <div class="row justify-content-center">
+          <div class="player-area player1 col-6 justify-content-center">
+        <div class="slider-container">
+          <div
+            id="ks-player1-1"
+            class="keen-slider"
+            style="height: 200px; width: 100px"
+          >
+            <div class="keen-slider__slide number-slide0">0</div>
+            <div class="keen-slider__slide number-slide1">1</div>
+            <div class="keen-slider__slide number-slide2">2</div>
+            <div class="keen-slider__slide number-slide3">3</div>
+            <div class="keen-slider__slide number-slide4">4</div>
+            <div class="keen-slider__slide number-slide5">5</div>
+            <div class="keen-slider__slide number-slide6">6</div>
+            <div class="keen-slider__slide number-slide7">7</div>
+            <div class="keen-slider__slide number-slide8">8</div>
+            <div class="keen-slider__slide number-slide9">9</div>
+          </div>
+
+          <div class="buttons">
+            <button id="ks-player1-1-full-roll">Full Roll</button>
+            <button id="ks-player1-1-nudge">Nudge</button>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div
+            id="ks-player1-2"
+            class="keen-slider"
+            style="height: 200px; width: 100px"
+          >
+            <div class="keen-slider__slide number-slide0">?</div>
+          </div>
+
+          <div class="buttons">
+            <button id="ks-player1-2-full-roll">Full Roll</button>
+            <button id="ks-player1-2-nudge">Nudge</button>
+          </div>
+        </div>
+        <div class="slider-container">
+          <div
+            id="ks-player1-3"
+            class="keen-slider"
+            style="height: 200px; width: 100px"
+          >
+            <div class="keen-slider__slide number-slide0">?</div>
+          </div>
+
+          <div class="buttons">
+            <button id="ks-player1-3-full-roll">Full Roll</button>
+            <button id="ks-player1-3-nudge">Nudge</button>
+          </div>
+        </div>
+        <button id="ks-player1-all-full-roll">Roll All</button>
+      </div>
+      <div class="player-area player2 col-6 justify-content-center">
+        <div class="slider-container">
+          <div
+            id="ks-player2-1"
+            class="keen-slider"
+            style="height: 200px; width: 100px"
+          >
+            <div class="keen-slider__slide number-slide0">?</div>
+          </div>
+
+          <div class="buttons">
+            <button id="ks-player2-1-full-roll">Full Roll</button>
+            <button id="ks-player2-1-nudge">Nudge</button>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div
+            id="ks-player2-2"
+            class="keen-slider"
+            style="height: 200px; width: 100px"
+          >
+            <div class="keen-slider__slide number-slide0">?</div>
+          </div>
+
+          <div class="buttons">
+            <button id="ks-player2-2-full-roll">Full Roll</button>
+            <button id="ks-player2-2-nudge">Nudge</button>
+          </div>
+        </div>
+        <div class="slider-container">
+          <div
+            id="ks-player2-3"
+            class="keen-slider"
+            style="height: 200px; width: 100px"
+          >
+            <div class="keen-slider__slide number-slide0">?</div>
+          </div>
+
+          <div class="buttons">
+            <button id="ks-player2-3-full-roll">Full Roll</button>
+            <button id="ks-player2-3-nudge">Nudge</button>
+          </div>
+        </div>
+        <button id="ks-player2-all-full-roll">Roll All</button>
       </div>
     </div>
-
-    <div class="door">
-      <div class="boxes">
-        <!-- <div class="box">?</div> -->
-      </div>
-    </div>
-
-    <div class="door">
-      <div class="boxes">
-        <!-- <div class="box">?</div> -->
-      </div>
-    </div>
-  </div>
-
-  <div class="buttons">
-    <button id="spinner">Spin</button>
-    <button id="reseter">Reset</button>
-  </div>
-
-  <p class="info"></p>
-</div>
-    <script
+      <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
-
-    <div class="player-area player1">
-      <div class="slider-container">
-        <div id="ks-player1-1" class="keen-slider" style="height: 200px; width: 100px">
-          <div class="keen-slider__slide number-slide0">0</div>
-          <div class="keen-slider__slide number-slide1">1</div>
-          <div class="keen-slider__slide number-slide2">2</div>
-          <div class="keen-slider__slide number-slide3">3</div>
-          <div class="keen-slider__slide number-slide4">4</div>
-          <div class="keen-slider__slide number-slide5">5</div>
-          <div class="keen-slider__slide number-slide6">6</div>
-          <div class="keen-slider__slide number-slide7">7</div>
-          <div class="keen-slider__slide number-slide8">8</div>
-          <div class="keen-slider__slide number-slide9">9</div>
-        </div>
-    
-        <div class="buttons">
-          <button id="ks-player1-1-full-roll">Full Roll</button>
-          <button id="ks-player1-1-nudge">Nudge</button>
-        </div>
-      </div>
-  
-      <div class="slider-container">
-        <div id="ks-player1-2" class="keen-slider" style="height: 200px; width: 100px">
-          <div class="keen-slider__slide number-slide0">?</div>
-        </div>
-    
-        <div class="buttons">
-          <button id="ks-player1-2-full-roll">Full Roll</button>
-          <button id="ks-player1-2-nudge">Nudge</button>
-        </div>
-      </div>
-      <div class="slider-container">
-        <div id="ks-player1-3" class="keen-slider" style="height: 200px; width: 100px">
-          <div class="keen-slider__slide number-slide0">?</div>
-        </div>
-    
-        <div class="buttons">
-          <button id="ks-player1-3-full-roll">Full Roll</button>
-          <button id="ks-player1-3-nudge">Nudge</button>
-        </div>
-      </div>
-      <button id="ks-player1-all-full-roll">Roll All</button>
-    </div> 
-    <div class="player-area player2">
-      <div class="slider-container">
-        <div id="ks-player2-1" class="keen-slider" style="height: 200px; width: 100px">
-          <div class="keen-slider__slide number-slide0">?</div>
-        </div>
-    
-        <div class="buttons">
-          <button id="ks-player2-1-full-roll">Full Roll</button>
-          <button id="ks-player2-1-nudge">Nudge</button>
-        </div>
-      </div>
-  
-      <div class="slider-container">
-        <div id="ks-player2-2" class="keen-slider" style="height: 200px; width: 100px">
-          <div class="keen-slider__slide number-slide0">?</div>
-        </div>
-    
-        <div class="buttons">
-          <button id="ks-player2-2-full-roll">Full Roll</button>
-          <button id="ks-player2-2-nudge">Nudge</button>
-        </div>
-      </div>
-      <div class="slider-container">
-        <div id="ks-player2-3" class="keen-slider" style="height: 200px; width: 100px">
-          <div class="keen-slider__slide number-slide0">?</div>
-        </div>
-    
-        <div class="buttons">
-          <button id="ks-player2-3-full-roll">Full Roll</button>
-          <button id="ks-player2-3-nudge">Nudge</button>
-        </div>
-      </div>
-      <button id="ks-player2-all-full-roll">Roll All</button>
-    </div>
   </body>
 </html>
