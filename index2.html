@@ -18,23 +18,35 @@
   </head>
   <body>
     <div class="slot-machine">
-      <h1>Number Slots</h1>
-      <div class="group">
-        <div class="fake-reel"></div>
-        <div class="fake-reel"></div>
-        <div class="fake-reel"></div>
+      <header>
+        <h1 class="text-center">Number Slots</h1>
+      </header>
+      <section class="display">
+        <div class="group">
+          <div class="display-reel"></div>
+          <div class="display-reel"></div>
+          <div class="display-reel"></div>
+          <div class="display-reel"></div>
+          <div class="display-reel"></div>
+        </div>
+      </section>
+      <section class="player-area">
+        <div class="group">
+          <div class="reel"></div>
+          <div class="reel"></div>
+          <div class="reel"></div>
+          <div class="reel"></div>
+          <div class="reel"></div>
+        </div>
+      </section>
+      <div class="buttons text-center">
+        <button class="lever button" id="spin">Spin</button>
+        <button class="reset button" id="reset">Reset</button>
+        <h2 class="results-msg results"></h2>
+        <h2><span id="coins-remaining"></span> coins remaining</h2>
       </div>
-
-      <div class="group">
-        <div class="reel"></div>
-        <div class="reel"></div>
-        <div class="reel"></div>
-      </div>
-
-      <h2 class="results-msg results"></h2>
-
-      <button class="lever button">Start</button>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
