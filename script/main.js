@@ -217,13 +217,29 @@ ks_player1_1_full_roll.addEventListener("click", () => {
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
-  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+  if (p1coinsRemaining >= 1) {
+    p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_1_nudge.addEventListener("click", () => {
   slider_1_1.next();
-  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+  if (p1coinsRemaining >= 1) {
+    p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // **** Player 1 Slider 2 buttons
@@ -242,13 +258,29 @@ ks_player1_2_full_roll.addEventListener("click", () => {
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
-  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+  if (p1coinsRemaining >= 1) {
+    p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_2_nudge.addEventListener("click", () => {
   slider_1_2.next();
-  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+  if (p1coinsRemaining >= 1) {
+    p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // **** Player 1 Slider 3 buttons
@@ -266,13 +298,29 @@ ks_player1_3_full_roll.addEventListener("click", () => {
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
-  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+  if (p1coinsRemaining >= 1) {
+    p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_3_nudge.addEventListener("click", () => {
   slider_1_3.next();
-  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+  if (p1coinsRemaining >= 1) {
+    p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // **** Player 1 Roll All Button
@@ -288,7 +336,15 @@ ks_player1_all_full_roll.addEventListener("click", () => {
   const ksPlayer1Index3 = SingleRandomNumberGenerator();
   slider_1_3.moveToIdx(ksPlayer1Index3, true);
   console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
-  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+  if (p1coinsRemaining >= 1) {
+    p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 //**  Generate Player 2 Slides **/
@@ -372,12 +428,28 @@ ks_player2_1_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
   slider_2_1.moveToIdx(ksPlayer1Index, true);
-  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+  if (p2coinsRemaining >= 1) {
+    p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 ks_player2_1_nudge.addEventListener("click", () => {
   slider_2_1.next();
-  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+  if (p2coinsRemaining >= 1) {
+    p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // **** Player 2 Slider 2 buttons
@@ -390,12 +462,28 @@ ks_player2_2_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
   slider_2_2.moveToIdx(ksPlayer1Index, true);
-  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+  if (p2coinsRemaining >= 1) {
+    p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 ks_player2_2_nudge.addEventListener("click", () => {
   slider_2_2.next();
-  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+  if (p2coinsRemaining >= 1) {
+    p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // **** Player 2 Slider 3 buttons
@@ -413,12 +501,28 @@ ks_player2_3_full_roll.addEventListener("click", () => {
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
-  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+  if (p2coinsRemaining >= 1) {
+    p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 ks_player2_3_nudge.addEventListener("click", () => {
   slider_2_3.next();
-  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+  if (p2coinsRemaining >= 1) {
+    p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
 
 // **** Player 2 Roll All Button
@@ -434,5 +538,13 @@ ks_player2_all_full_roll.addEventListener("click", () => {
   const ksPlayer1Index3 = SingleRandomNumberGenerator();
   slider_2_3.moveToIdx(ksPlayer1Index3, true);
   console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
-  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+  if (p2coinsRemaining >= 1) {
+    p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+  } else {
+    document.getElementsByTagName("button");
+    Array.from(document.getElementsByTagName("button")).forEach(
+      (b) => (b.disabled = true)
+    );
+    alert("Game Over!");
+  }
 });
