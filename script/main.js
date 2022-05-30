@@ -106,8 +106,8 @@ function shuffle([...arr]) {
   return arr;
 }
 const shuffled = shuffle(numbers);
-
 init();
+console.log(shuffled)
 
 // Generate slider slides and appends them to target element programmatically
 function slideGenerator(content = numbers, targetElement) {
@@ -118,6 +118,12 @@ function slideGenerator(content = numbers, targetElement) {
     const className1 = `keen-slider__slide`;
     div.classList.add(className1);
     const className2 = `number-slide${slideNumber}`;
+    // if the target element id contains the text player1 or player2
+    if (targetElement.id.includes("player1")) {
+      div.classList.add("player-1");
+    } else if (targetElement.id.includes("player2")) {
+      div.classList.add("player-2");
+    };
     div.classList.add(className2);
     div.textContent = item;
     frag.appendChild(div);
@@ -132,6 +138,9 @@ function randomSlideGenerator(array = numbers, targetElement) {
 }
 
 // Create slider_1_2 slides
+const player1_slider1 = document.getElementById("ks-player1-1");
+randomSlideGenerator(numbers, player1_slider1);
+
 const player1_slider2 = document.getElementById("ks-player1-2");
 randomSlideGenerator(numbers, player1_slider2);
 
@@ -680,3 +689,73 @@ ks_player2_all_full_roll.addEventListener("click", () => {
     });
   }
 });
+
+/// Game evaluation 
+/* 1) Write a function that retrieves the text content 
+2) Create and push the textContent to an array for the target, p1 and p2 
+3) For each player, concatenate the values of the current index of each slider to get a single 3 digit number
+4) Trigger all of this from the 'Who won?' button 
+
+*/
+const winChecker = document.querySelector(
+  "#winner"
+);
+
+function getValue(element) {
+  return element.textContent;
+};
+
+
+winChecker.addEventListener("click", () => {
+  // create arrays 
+  const target = new Array();
+  const player1 = new Array();
+  const player2 = new Array();
+
+  /// For all with div class .box, return the value of the textContent and store it as a single string
+  for(const element of document.querySelectorAll('.box')) {
+    target.push(getValue(element));
+  };
+
+
+  /// push the values of the sliders into the array 
+  /// Player 1 
+  const p1_1Index = slider_1_1.track.details.abs;
+  const p1_2Index = slider_1_2.track.details.abs;
+  const p1_3Index = slider_1_3.track.details.abs;
+
+  player1.push(getValue(player1_slider1.children[p1_1Index]));
+  player1.push(getValue(player1_slider2.children[p1_2Index]));
+  player1.push(getValue(player1_slider3.children[p1_3Index]));
+
+  /// Player 2 
+  const p2_1Index = slider_2_1.track.details.abs;
+  const p2_2Index = slider_2_2.track.details.abs;
+  const p2_3Index = slider_2_3.track.details.abs;
+
+  player2.push(getValue(player2_slider1.children[p2_1Index]));
+  player2.push(getValue(player2_slider2.children[p2_2Index]));
+  player2.push(getValue(player2_slider3.children[p2_3Index]));
+
+
+  console.log("🚀 ~ file: main.js ~ line 566 ~ target", target)
+  console.log("🚀 ~ file: main.js ~ line 566 ~ p1", player1)
+  console.log("🚀 ~ file: main.js ~ line 566 ~ p2", player2)
+
+  const player1Score = player1.join('') * -1;
+  const player2Score = player2.join('') * -1;
+  const targetScore = target.join('') * -1;
+
+  /// See if player1Score is closer to targetScore than player2Score
+  if (Math.abs(player1Score - targetScore) < Math.abs(player2Score - targetScore)) {
+    alert("Player 1 wins!");
+  } else if (Math.abs(player1Score - targetScore) > Math.abs(player2Score - targetScore)) {
+    alert("Player 2 wins!");
+  } else {
+    alert("It's a draw!");
+  };
+  console.log(Math.abs(player1Score - targetScore));
+  console.log(Math.abs(player2Score - targetScore));
+});
+
+
