@@ -211,10 +211,11 @@ ks_player1_1_nudge.addEventListener("click", () => {
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player1Buttons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -247,10 +248,11 @@ ks_player1_2_full_roll.addEventListener("click", () => {
     slider_1_2.moveToIdx(ksPlayer1Index, true);
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player1Buttons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -277,10 +279,11 @@ ks_player1_2_nudge.addEventListener("click", () => {
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player1Buttons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -312,10 +315,11 @@ ks_player1_3_full_roll.addEventListener("click", () => {
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player1Buttons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -342,10 +346,11 @@ ks_player1_3_nudge.addEventListener("click", () => {
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player1NudgeButtons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -382,6 +387,7 @@ ks_player1_all_full_roll.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
@@ -471,10 +477,11 @@ ks_player2_1_full_roll.addEventListener("click", () => {
     slider_2_1.moveToIdx(ksPlayer1Index, true);
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player2Buttons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -500,10 +507,11 @@ ks_player2_1_nudge.addEventListener("click", () => {
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player2NudgeButtons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -528,11 +536,13 @@ ks_player2_2_full_roll.addEventListener("click", () => {
   if (p2coinsRemaining >= 1) {
     slider_2_2.moveToIdx(ksPlayer1Index, true);
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+    endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player2Buttons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -546,6 +556,7 @@ ks_player2_2_full_roll.addEventListener("click", () => {
 
 ks_player2_2_nudge.addEventListener("click", () => {
   if (p2coinsRemaining < 2) {
+    disablePlayerButtons(player2NudgeButtons);
     GrowlNotification.notify({
       title: "Sorry!",
       description: "You do not have enough coins.",
@@ -558,10 +569,11 @@ ks_player2_2_nudge.addEventListener("click", () => {
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player2NudgeButtons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -593,10 +605,11 @@ ks_player2_3_full_roll.addEventListener("click", () => {
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player2Buttons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -622,10 +635,11 @@ ks_player2_3_nudge.addEventListener("click", () => {
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
     endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player2NudgeButtons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -787,6 +801,7 @@ const player1Buttons = [
   ks_player1_1_nudge,
   ks_player1_2_nudge,
   ks_player1_3_nudge,
+  ks_player1_all_full_roll,
 ];
 const player1NudgeButtons = [
   ks_player1_1_nudge,
@@ -800,6 +815,7 @@ const player2Buttons = [
   ks_player2_1_nudge,
   ks_player2_2_nudge,
   ks_player2_3_nudge,
+  ks_player2_all_full_roll,
 ];
 const player2NudgeButtons = [
   ks_player2_1_nudge,
