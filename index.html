@@ -21,15 +21,7 @@
   <body>
 <div class="p-5 m-4">
       <h1 class="text-center">Number Slots</h1>
-      <div class="row justify-content-center">
-        <div class="instructions col-md-auto">
-          <ol class="rules p-4">
-            <li>Click spin to begin</li>
-            <li>Spend coins to try to to get close to the number</li>
-            <li>The player closest to the number wins</li>
-          </ol>
-        </div>
-      </div>
+
     </section>
     <div id="app">
       <div class="doors">
@@ -53,8 +45,11 @@
       </div>
 
       <div class="row justify-content-center text-center">
-        <button id="spinner" class="btn btn-success">Spin</button>
-        <button id="reseter" class="btn btn-danger">Reset game</button>
+        <div>
+          <button id="spinner" class="btn btn-dark" style="width: 45%;">Spin</button>
+          <button id="winner" type="button" class="btn btn-primary" style="width: 45%;">Who won?</button>
+        </div>
+        <button id="reseter" class="btn btn-light" style="width: 30%;">Reset</button>  
       </div>
 
     
@@ -71,17 +66,7 @@
             class="keen-slider"
             style="height: 100px; width: 100px"
           >
-          
-            <div class="keen-slider__slide number-slide0">0</div>
-            <div class="keen-slider__slide number-slide1">1</div>
-            <div class="keen-slider__slide number-slide2">2</div>
-            <div class="keen-slider__slide number-slide3">3</div>
-            <div class="keen-slider__slide number-slide4">4</div>
-            <div class="keen-slider__slide number-slide5">5</div>
-            <div class="keen-slider__slide number-slide6">6</div>
-            <div class="keen-slider__slide number-slide7">7</div>
-            <div class="keen-slider__slide number-slide8">8</div>
-            <div class="keen-slider__slide number-slide9">9</div>
+            <div class="keen-slider__slide number-slide0">?</div>
           </div>
 
           <div class="buttons">
@@ -96,7 +81,7 @@
             class="keen-slider"
             style="height: 100px; width: 100px"
           >
-            <div class="keen-slider__slide number-slide0">?</div>
+            <div class="keen-slider__slide number-slide0 player-1">?</div>
           </div>
 
           <div class="buttons">
@@ -110,7 +95,7 @@
             class="keen-slider"
             style="height: 100px; width: 100px"
           >
-            <div class="keen-slider__slide number-slide0">?</div>
+            <div class="keen-slider__slide number-slide0 player-1">?</div>
           </div>
 
           <div class="buttons">
@@ -127,7 +112,7 @@
             class="keen-slider"
             style="height: 100px; width: 100px"
           >
-            <div class="keen-slider__slide number-slide0">?</div>
+            <div class="keen-slider__slide number-slide0 player-2">?</div>
           </div>
 
           <div class="buttons">
@@ -142,7 +127,7 @@
             class="keen-slider"
             style="height: 100px; width: 100px"
           >
-            <div class="keen-slider__slide number-slide0">?</div>
+            <div class="keen-slider__slide number-slide0 player-2">?</div>
           </div>
 
           <div class="buttons">
@@ -156,7 +141,7 @@
             class="keen-slider"
             style="height: 100px; width: 100px"
           >
-            <div class="keen-slider__slide number-slide0">?</div>
+            <div class="keen-slider__slide number-slide0 player-2">?</div>
           </div>
 
           <div class="buttons">
@@ -175,5 +160,15 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
+    <div class="row justify-content-center">
+      <div class="instructions col-md-auto">
+        <h2>Instructions</h2>
+        <ol class="rules p-4">
+          <li>Click spin to begin</li>
+          <li>Spend coins to try to to get close to the number</li>
+          <li>The player closest to the number wins</li>
+        </ol>
+      </div>
+    </div>
   </body>
 </html>
