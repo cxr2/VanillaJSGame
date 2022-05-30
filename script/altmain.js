@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function action() {
     if (start !== undefined) return;
-
     $(".reel-door").fadeOut(100);
     $(".lever").text("Good luck!");
     for (let i = 0, len = sTarget.length; i < len; i += 1) {
