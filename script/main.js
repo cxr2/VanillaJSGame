@@ -22,7 +22,6 @@ function randomArrGenerator(min = 0, max = 9, length = 3) {
 
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 // const shuffled = shuffle(numbers);
-document.querySelector(".info").textContent = numbers.join(" ");
 
 const doors = document.querySelectorAll(".door");
 document.querySelector("#spinner").addEventListener("click", spin);
@@ -196,6 +195,12 @@ const slider_1_3 = new keenSlider("#ks-player1-3", {
 
 console.dir(slider_1_1);
 
+//p1 Coins Remaining
+
+let p1coinsRemaining = 10;
+const p1coinsRemainingDisplay = document.getElementById("p1-coins-remaining");
+p1coinsRemainingDisplay.textContent = p1coinsRemaining;
+
 // **** Player 1 Slider 1 buttons
 // Get the ks-player1-1-full-roll element
 const ks_player1_1_full_roll = document.querySelector(
@@ -212,11 +217,13 @@ ks_player1_1_full_roll.addEventListener("click", () => {
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
+  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_1_nudge.addEventListener("click", () => {
   slider_1_1.next();
+  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
 });
 
 // **** Player 1 Slider 2 buttons
@@ -235,11 +242,13 @@ ks_player1_2_full_roll.addEventListener("click", () => {
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
+  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_2_nudge.addEventListener("click", () => {
   slider_1_2.next();
+  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
 });
 
 // **** Player 1 Slider 3 buttons
@@ -257,11 +266,13 @@ ks_player1_3_full_roll.addEventListener("click", () => {
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
+  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_3_nudge.addEventListener("click", () => {
   slider_1_3.next();
+  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
 });
 
 // **** Player 1 Roll All Button
@@ -277,6 +288,7 @@ ks_player1_all_full_roll.addEventListener("click", () => {
   const ksPlayer1Index3 = SingleRandomNumberGenerator();
   slider_1_3.moveToIdx(ksPlayer1Index3, true);
   console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
+  p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
 });
 
 //**  Generate Player 2 Slides **/
@@ -345,6 +357,10 @@ const slider_2_3 = new keenSlider("#ks-player2-3", {
   // },
 });
 
+let p2coinsRemaining = 10;
+const p2coinsRemainingDisplay = document.getElementById("p2-coins-remaining");
+p2coinsRemainingDisplay.textContent = p2coinsRemaining;
+
 // ***** Player 2 Controls
 // **** Player 2 Slider 1 buttons
 const ks_player2_1_full_roll = document.querySelector(
@@ -356,10 +372,12 @@ ks_player2_1_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
   slider_2_1.moveToIdx(ksPlayer1Index, true);
+  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
 });
 
 ks_player2_1_nudge.addEventListener("click", () => {
   slider_2_1.next();
+  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
 });
 
 // **** Player 2 Slider 2 buttons
@@ -372,10 +390,12 @@ ks_player2_2_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
   slider_2_2.moveToIdx(ksPlayer1Index, true);
+  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
 });
 
 ks_player2_2_nudge.addEventListener("click", () => {
   slider_2_2.next();
+  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
 });
 
 // **** Player 2 Slider 3 buttons
@@ -393,10 +413,12 @@ ks_player2_3_full_roll.addEventListener("click", () => {
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
+  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
 });
 
 ks_player2_3_nudge.addEventListener("click", () => {
   slider_2_3.next();
+  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
 });
 
 // **** Player 2 Roll All Button
@@ -412,4 +434,5 @@ ks_player2_all_full_roll.addEventListener("click", () => {
   const ksPlayer1Index3 = SingleRandomNumberGenerator();
   slider_2_3.moveToIdx(ksPlayer1Index3, true);
   console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
+  p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
 });

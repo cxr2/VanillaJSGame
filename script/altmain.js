@@ -1,4 +1,5 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
+  ``;
   let tMax = 4000, // animation time, ms
     height = 700,
     speeds = [],
@@ -92,8 +93,7 @@ $(document).ready(function () {
     if (matchedNumbers == 5) {
       results = "You matched all 5 numbers! Jackpot!" && coinsRemaining + 5;
     } else if (matchedNumbers == 1) {
-      results =
-        "You matched 1 number. Better luck next time!" && coinsRemaining + 1;
+      results = "You matched 1 number." && coinsRemaining + 1;
     } else {
       results =
         "You matched " + matchedNumbers + " numbers. Better luck next time!";
