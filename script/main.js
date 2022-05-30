@@ -25,16 +25,6 @@ const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 // When player == true ==> player1's turn false ==> player2's turn
 let player = true;
-const player1Buttons = Array.from(document.querySelectorAll(".player1 button"));
-const player1NudgeButtons = Array.from(
-  document.querySelectorAll("player1 .nudge")
-);
-const player2Buttons = Array.from(document.querySelectorAll(".player2 button"));
-const player2NudgeButtons = Array.from(
-  document.querySelectorAll("player2 .nudge")
-);
-const allPlayerButtons = player1Buttons.concat(player2Buttons);
-console.log(allPlayerButtons);
 
 // function nudge(slider, player)
 
@@ -60,72 +50,6 @@ async function spin() {
   }
 }
 
-function init(firstInit = true, groups = 1, duration = 1) {
-  for (const button of allPlayerButtons) {
-    if (button.hasAttribute("disabled") == false) {
-      button.toggleAttribute("disabled");
-    }
-  }
-
-  for (const door of doors) {
-    if (firstInit) {
-      door.dataset.spinned = "0";
-    } else if (door.dataset.spinned === "1") {
-      return;
-    }
-
-    const boxes = door.querySelector(".boxes");
-    const boxesClone = boxes.cloneNode(false);
-
-    const pool = ["❓"];
-    if (!firstInit) {
-      const arr = [];
-      for (let n = 0; n < (groups > 0 ? groups : 1); n++) {
-        arr.push(...numbers);
-      }
-      pool.push(...shuffle(arr));
-
-      boxesClone.addEventListener(
-        "transitionstart",
-        function () {
-          door.dataset.spinned = "1";
-          this.querySelectorAll(".box").forEach((box) => {
-            box.style.filter = "blur(1px)";
-          });
-        },
-        { once: true }
-      );
-
-      boxesClone.addEventListener(
-        "transitionend",
-        function () {
-          this.querySelectorAll(".box").forEach((box, index) => {
-            box.style.filter = "blur(0)";
-            if (index > 0) this.removeChild(box);
-          });
-        },
-        { once: true }
-      );
-    }
-    // console.log(pool);
-
-    for (let i = pool.length - 1; i >= 0; i--) {
-      const box = document.createElement("div");
-      box.classList.add("box");
-      box.style.width = door.clientWidth + "px";
-      box.style.height = door.clientHeight + "px";
-      box.textContent = pool[i];
-      boxesClone.appendChild(box);
-    }
-    boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
-    boxesClone.style.transform = `translateY(-${
-      door.clientHeight * (pool.length - 1)
-    }px)`;
-    door.replaceChild(boxesClone, boxes);
-    // console.log(door);
-  }
-}
-
 /// Shuffles the entries in an array
 function shuffle([...arr]) {
   let m = arr.length;
@@ -135,8 +59,6 @@ function shuffle([...arr]) {
   }
   return arr;
 }
-
-init();
 
 // Generate slider slides and appends them to target element programmatically
 function slideGenerator(content = numbers, targetElement) {
@@ -858,6 +780,34 @@ function checkCanAffordNudge(playerBoolean) {
   }
 }
 
+const player1Buttons = [
+  ks_player1_1_full_roll,
+  ks_player1_2_full_roll,
+  ks_player1_3_full_roll,
+  ks_player1_1_nudge,
+  ks_player1_2_nudge,
+  ks_player1_3_nudge,
+];
+const player1NudgeButtons = [
+  ks_player1_1_nudge,
+  ks_player1_2_nudge,
+  ks_player1_3_nudge,
+];
+const player2Buttons = [
+  ks_player2_1_full_roll,
+  ks_player2_2_full_roll,
+  ks_player2_3_full_roll,
+  ks_player2_1_nudge,
+  ks_player2_2_nudge,
+  ks_player2_3_nudge,
+];
+const player2NudgeButtons = [
+  ks_player2_1_nudge,
+  ks_player2_2_nudge,
+  ks_player2_3_nudge,
+];
+const allPlayerButtons = player1Buttons.concat(player2Buttons);
+console.log(allPlayerButtons);
 // Current player data
 let playerNudgeButtons;
 let playerButtons;
@@ -924,3 +874,71 @@ function endTurn() {
   //   checkWin();
   // }
 }
+
+function init(firstInit = true, groups = 1, duration = 1) {
+  for (const button of allPlayerButtons) {
+    if (button.hasAttribute("disabled") == false) {
+      button.toggleAttribute("disabled");
+    }
+  }
+
+  for (const door of doors) {
+    if (firstInit) {
+      door.dataset.spinned = "0";
+    } else if (door.dataset.spinned === "1") {
+      return;
+    }
+
+    const boxes = door.querySelector(".boxes");
+    const boxesClone = boxes.cloneNode(false);
+
+    const pool = ["❓"];
+    if (!firstInit) {
+      const arr = [];
+      for (let n = 0; n < (groups > 0 ? groups : 1); n++) {
+        arr.push(...numbers);
+      }
+      pool.push(...shuffle(arr));
+
+      boxesClone.addEventListener(
+        "transitionstart",
+        function () {
+          door.dataset.spinned = "1";
+          this.querySelectorAll(".box").forEach((box) => {
+            box.style.filter = "blur(1px)";
+          });
+        },
+        { once: true }
+      );
+
+      boxesClone.addEventListener(
+        "transitionend",
+        function () {
+          this.querySelectorAll(".box").forEach((box, index) => {
+            box.style.filter = "blur(0)";
+            if (index > 0) this.removeChild(box);
+          });
+        },
+        { once: true }
+      );
+    }
+    // console.log(pool);
+
+    for (let i = pool.length - 1; i >= 0; i--) {
+      const box = document.createElement("div");
+      box.classList.add("box");
+      box.style.width = door.clientWidth + "px";
+      box.style.height = door.clientHeight + "px";
+      box.textContent = pool[i];
+      boxesClone.appendChild(box);
+    }
+    boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
+    boxesClone.style.transform = `translateY(-${
+      door.clientHeight * (pool.length - 1)
+    }px)`;
+    door.replaceChild(boxesClone, boxes);
+    // console.log(door);
+  }
+}
+
+init();
