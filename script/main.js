@@ -23,8 +23,31 @@ function randomArrGenerator(min = 0, max = 9, length = 3) {
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 // const shuffled = shuffle(numbers);
 
+// When player == true ==> player1's turn false ==> player2's turn
+let player = true;
+const player1Buttons = Array.from(document.querySelectorAll(".player1 button"));
+const player1NudgeButtons = Array.from(
+  document.querySelectorAll("player1 .nudge")
+);
+const player2Buttons = Array.from(document.querySelectorAll(".player2 button"));
+const player2NudgeButtons = Array.from(
+  document.querySelectorAll("player2 .nudge")
+);
+const allPlayerButtons = player1Buttons.concat(player2Buttons);
+console.log(allPlayerButtons);
+
+// function nudge(slider, player)
+
 const doors = document.querySelectorAll(".door");
-document.querySelector("#spinner").addEventListener("click", spin);
+document.querySelector("#spinner").addEventListener("click", () => {
+  spin();
+  // set first player to player 1
+  player = true;
+  // enable player 1 buttons
+  for (const button of player1Buttons) {
+    button.toggleAttribute("disabled");
+  }
+});
 document.querySelector("#reseter").addEventListener("click", init);
 
 async function spin() {
@@ -38,6 +61,12 @@ async function spin() {
 }
 
 function init(firstInit = true, groups = 1, duration = 1) {
+  for (const button of allPlayerButtons) {
+    if (button.hasAttribute("disabled") == false) {
+      button.toggleAttribute("disabled");
+    }
+  }
+
   for (const door of doors) {
     if (firstInit) {
       door.dataset.spinned = "0";
@@ -97,6 +126,7 @@ function init(firstInit = true, groups = 1, duration = 1) {
   }
 }
 
+/// Shuffles the entries in an array
 function shuffle([...arr]) {
   let m = arr.length;
   while (m) {
@@ -105,9 +135,8 @@ function shuffle([...arr]) {
   }
   return arr;
 }
-const shuffled = shuffle(numbers);
+
 init();
-console.log(shuffled);
 
 // Generate slider slides and appends them to target element programmatically
 function slideGenerator(content = numbers, targetElement) {
@@ -129,6 +158,7 @@ function slideGenerator(content = numbers, targetElement) {
     frag.appendChild(div);
     slideNumber += 1;
   }
+
   targetElement.appendChild(frag);
 }
 
@@ -220,19 +250,18 @@ const ks_player1_1_nudge = document.querySelector("#ks-player1-1-nudge");
 /// Create a random number generator that selects a number between 0 and 9
 ks_player1_1_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
-  ksPlayer1Index = Math.floor(Math.random() * 10);
-  slider_1_1.moveToIdx(ksPlayer1Index, true);
-  console.log(
-    "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
-    ksPlayer1Index
-  );
+  ksPlayer1Index = SingleRandomNumberGenerator();
+
   if (p1coinsRemaining >= 1) {
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+    slider_1_1.moveToIdx(ksPlayer1Index, true);
+    endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player1Buttons);
+    // document.getElementsByTagName("button");
+    // Array.from(document.getElementsByTagName("button")).forEach(
+    //   (b) => (b.disabled = true)
+    // );
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -240,12 +269,12 @@ ks_player1_1_full_roll.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_1_nudge.addEventListener("click", () => {
-  slider_1_1.next();
   if (p1coinsRemaining < 2) {
     GrowlNotification.notify({
       title: "Sorry!",
@@ -254,8 +283,11 @@ ks_player1_1_nudge.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    disablePlayerButtons(player1NudgeButtons);
   } else if (p1coinsRemaining >= 2) {
+    slider_1_1.next();
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -268,6 +300,7 @@ ks_player1_1_nudge.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
@@ -282,13 +315,15 @@ const ks_player1_2_nudge = document.querySelector("#ks-player1-2-nudge");
 ks_player1_2_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
-  slider_1_2.moveToIdx(ksPlayer1Index, true);
+
   console.log(
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
   if (p1coinsRemaining >= 1) {
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+    slider_1_2.moveToIdx(ksPlayer1Index, true);
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -301,12 +336,12 @@ ks_player1_2_full_roll.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_2_nudge.addEventListener("click", () => {
-  slider_1_2.next();
   if (p1coinsRemaining < 2) {
     GrowlNotification.notify({
       title: "Sorry!",
@@ -316,7 +351,9 @@ ks_player1_2_nudge.addEventListener("click", () => {
       closeTimeout: 0,
     });
   } else if (p1coinsRemaining >= 2) {
+    slider_1_2.next();
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -329,6 +366,7 @@ ks_player1_2_nudge.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
@@ -342,13 +380,15 @@ const ks_player1_3_nudge = document.querySelector("#ks-player1-3-nudge");
 ks_player1_3_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
-  slider_1_3.moveToIdx(ksPlayer1Index, true);
+
   console.log(
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
   if (p1coinsRemaining >= 1) {
+    slider_1_3.moveToIdx(ksPlayer1Index, true);
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -361,12 +401,12 @@ ks_player1_3_full_roll.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
 // Add event listener to the ks-player1-1-nudge element that will trigger the slider to go to the next slide
 ks_player1_3_nudge.addEventListener("click", () => {
-  slider_1_3.next();
   if (p1coinsRemaining < 2) {
     GrowlNotification.notify({
       title: "Sorry!",
@@ -376,7 +416,9 @@ ks_player1_3_nudge.addEventListener("click", () => {
       closeTimeout: 0,
     });
   } else if (p1coinsRemaining >= 2) {
+    slider_1_3.next();
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 2;
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -389,6 +431,7 @@ ks_player1_3_nudge.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
@@ -398,20 +441,18 @@ const ks_player1_all_full_roll = document.querySelector(
 );
 
 ks_player1_all_full_roll.addEventListener("click", () => {
-  const ksPlayer1Index1 = SingleRandomNumberGenerator();
-  slider_1_1.moveToIdx(ksPlayer1Index1, true);
-  const ksPlayer1Index2 = SingleRandomNumberGenerator();
-  slider_1_2.moveToIdx(ksPlayer1Index2, true);
-  const ksPlayer1Index3 = SingleRandomNumberGenerator();
-  slider_1_3.moveToIdx(ksPlayer1Index3, true);
-  console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
   if (p1coinsRemaining >= 1) {
+    const ksPlayer1Index1 = SingleRandomNumberGenerator();
+    slider_1_1.moveToIdx(ksPlayer1Index1, true);
+    const ksPlayer1Index2 = SingleRandomNumberGenerator();
+    slider_1_2.moveToIdx(ksPlayer1Index2, true);
+    const ksPlayer1Index3 = SingleRandomNumberGenerator();
+    slider_1_3.moveToIdx(ksPlayer1Index3, true);
+    console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
     p1coinsRemainingDisplay.textContent = p1coinsRemaining -= 1;
+    endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player1Buttons);
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -502,9 +543,11 @@ const ks_player2_1_nudge = document.querySelector("#ks-player2-1-nudge");
 ks_player2_1_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
-  slider_2_1.moveToIdx(ksPlayer1Index, true);
+
   if (p2coinsRemaining >= 1) {
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+    slider_2_1.moveToIdx(ksPlayer1Index, true);
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -517,11 +560,11 @@ ks_player2_1_full_roll.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
 ks_player2_1_nudge.addEventListener("click", () => {
-  slider_2_1.next();
   if (p2coinsRemaining < 2) {
     GrowlNotification.notify({
       title: "Sorry!",
@@ -531,7 +574,9 @@ ks_player2_1_nudge.addEventListener("click", () => {
       closeTimeout: 0,
     });
   } else if (p2coinsRemaining >= 2) {
+    slider_2_1.next();
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -544,6 +589,7 @@ ks_player2_1_nudge.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
@@ -556,8 +602,9 @@ const ks_player2_2_nudge = document.querySelector("#ks-player2-2-nudge");
 ks_player2_2_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
-  slider_2_2.moveToIdx(ksPlayer1Index, true);
-  if (p2coinsRemaining >= 2) {
+
+  if (p2coinsRemaining >= 1) {
+    slider_2_2.moveToIdx(ksPlayer1Index, true);
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
   } else {
     document.getElementsByTagName("button");
@@ -571,11 +618,11 @@ ks_player2_2_full_roll.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
 ks_player2_2_nudge.addEventListener("click", () => {
-  slider_2_2.next();
   if (p2coinsRemaining < 2) {
     GrowlNotification.notify({
       title: "Sorry!",
@@ -585,7 +632,9 @@ ks_player2_2_nudge.addEventListener("click", () => {
       closeTimeout: 0,
     });
   } else if (p2coinsRemaining >= 2) {
+    slider_2_2.next();
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -598,6 +647,7 @@ ks_player2_2_nudge.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
@@ -611,13 +661,15 @@ const ks_player2_3_nudge = document.querySelector("#ks-player2-3-nudge");
 ks_player2_3_full_roll.addEventListener("click", () => {
   let ksPlayer1Index = 0;
   ksPlayer1Index = SingleRandomNumberGenerator();
-  slider_2_3.moveToIdx(ksPlayer1Index, true);
+
   console.log(
     "🚀 ~ file: main.js ~ line 125 ~ ks_player1_1_full_roll.addEventListener ~ ksPlayer1Index",
     ksPlayer1Index
   );
   if (p2coinsRemaining >= 1) {
+    slider_2_3.moveToIdx(ksPlayer1Index, true);
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -630,11 +682,11 @@ ks_player2_3_full_roll.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
 ks_player2_3_nudge.addEventListener("click", () => {
-  slider_2_3.next();
   if (p2coinsRemaining < 2) {
     GrowlNotification.notify({
       title: "Sorry!",
@@ -644,7 +696,9 @@ ks_player2_3_nudge.addEventListener("click", () => {
       closeTimeout: 0,
     });
   } else if (p2coinsRemaining >= 2) {
+    slider_2_3.next();
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 2;
+    endTurn();
   } else {
     document.getElementsByTagName("button");
     Array.from(document.getElementsByTagName("button")).forEach(
@@ -657,6 +711,7 @@ ks_player2_3_nudge.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
@@ -666,20 +721,18 @@ const ks_player2_all_full_roll = document.querySelector(
 );
 
 ks_player2_all_full_roll.addEventListener("click", () => {
-  const ksPlayer1Index1 = SingleRandomNumberGenerator();
-  slider_2_1.moveToIdx(ksPlayer1Index1, true);
-  const ksPlayer1Index2 = SingleRandomNumberGenerator();
-  slider_2_2.moveToIdx(ksPlayer1Index2, true);
-  const ksPlayer1Index3 = SingleRandomNumberGenerator();
-  slider_2_3.moveToIdx(ksPlayer1Index3, true);
-  console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
   if (p2coinsRemaining >= 1) {
+    const ksPlayer1Index1 = SingleRandomNumberGenerator();
+    slider_2_1.moveToIdx(ksPlayer1Index1, true);
+    const ksPlayer1Index2 = SingleRandomNumberGenerator();
+    slider_2_2.moveToIdx(ksPlayer1Index2, true);
+    const ksPlayer1Index3 = SingleRandomNumberGenerator();
+    slider_2_3.moveToIdx(ksPlayer1Index3, true);
+    console.log(ksPlayer1Index1, ksPlayer1Index2, ksPlayer1Index3);
     p2coinsRemainingDisplay.textContent = p2coinsRemaining -= 1;
+    endTurn();
   } else {
-    document.getElementsByTagName("button");
-    Array.from(document.getElementsByTagName("button")).forEach(
-      (b) => (b.disabled = true)
-    );
+    disablePlayerButtons(player2Buttons);
     GrowlNotification.notify({
       title: "Game Over!",
       description: "You are out of coins.",
@@ -687,6 +740,7 @@ ks_player2_all_full_roll.addEventListener("click", () => {
       position: "top-center",
       closeTimeout: 0,
     });
+    endTurn();
   }
 });
 
@@ -703,7 +757,9 @@ function getValue(element) {
   return element.textContent;
 }
 
-winChecker.addEventListener("click", () => {
+winChecker.addEventListener("click", () => checkWin());
+
+function checkWin() {
   // create arrays
   const target = new Array();
   const player1 = new Array();
@@ -771,6 +827,100 @@ winChecker.addEventListener("click", () => {
       closeTimeout: 0,
     });
   }
-  console.log(Math.abs(player1Score - targetScore));
-  console.log(Math.abs(player2Score - targetScore));
-});
+  console.log(
+    `player1Score(${player1Score}) - targetScore(${targetScore})`,
+    Math.abs(player1Score - targetScore)
+  );
+  console.log(
+    `player2Score(${player2Score}) - targetScore(${targetScore})`,
+    Math.abs(player2Score - targetScore)
+  );
+}
+
+function checkCanAffordNudge(playerBoolean) {
+  if (playerBoolean == true) {
+    const coinsRemaining = p1coinsRemaining;
+    const nudgeButtons = player1NudgeButtons;
+    if (coinsRemaining < 2) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  if (playerBoolean == false) {
+    const coinsRemaining = p2coinsRemaining;
+    const nudgeButtons = player2NudgeButtons;
+    if (coinsRemaining < 2) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
+// Current player data
+let playerNudgeButtons;
+let playerButtons;
+let playerCoins;
+
+function getPlayaData() {
+  if (player) {
+    playerNudgeButtons = player1NudgeButtons;
+    playerButtons = player1Buttons;
+    playerCoins = p1coinsRemaining;
+    console.log("Player 1's turn");
+  } else {
+    playerNudgeButtons = player2NudgeButtons;
+    playerButtons = player2Buttons;
+    playerCoins = p2coinsRemaining;
+    console.log("Player 2's turn");
+  }
+}
+function checkCoins() {
+  getPlayaData();
+  if (p1coinsRemaining < 1 && p2coinsRemaining < 1) {
+    checkWin();
+  }
+
+  if (playerCoins < 2) {
+    disablePlayerButtons(playerNudgeButtons);
+  }
+}
+
+function disablePlayerButtons(playerButtonsArr) {
+  for (const button of playerButtonsArr) {
+    if (button.hasAttribute("disabled") == false) {
+      button.toggleAttribute("disabled");
+    }
+  }
+}
+
+function endTurn() {
+  for (const button of allPlayerButtons) {
+    // turns off buttons player who just played
+    // and turns on buttons for next player
+    button.toggleAttribute("disabled");
+  }
+  player = !player;
+  checkCanAffordNudge(player);
+  checkCoins();
+
+  // //checks if player can afford nudge and disables
+  // if (player === true && p1coinsRemaining < 2) {
+  //   for (const button of player1NudgeButtons) {
+  //     if (button.hasAttribute("disabled") !== true) {
+  //       button.toggleAttribute("disable");
+  //     }
+  //   }
+  // }
+  // if (player === false && p2coinsRemaining < 2) {
+  //   for (const button of player2NudgeButtons) {
+  //     if (button.hasAttribute("disabled") !== true) {
+  //       button.toggleAttribute("disable");
+  //     }
+  //   }
+  // }
+  // if (p1coinsRemaining === 0 && p2coinsRemaining === 0) {
+  //   checkWin();
+  // }
+}
