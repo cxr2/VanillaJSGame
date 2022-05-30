@@ -24,46 +24,38 @@
       <div class="row justify-content-center">
         <div class="instructions col-md-auto">
           <ol class="rules p-4">
-            <li>Spin to start the game</li>
-            <li>Each player begins with 10 coins and must try to match the numbers</li>
-            <li>Full roll costs 1 coin, nudge costs 2.</li>
+            <li>Click spin to begin</li>
+            <li>Spend coins to try to to get close to the number</li>
+            <li>The player closest to the number wins</li>
           </ol>
         </div>
       </div>
     </section>
-    <div class="row justify-content-md-center">
-      <div class="col-md-auto">
- <div class="slider-container">
-          <div
-            id="ks-start-1"
-            class="keen-slider"
-            style="height: 100px; width: 100px"
-          >
-            <div class="keen-slider__slide number-slide0">?</div>
-          </div></div></div>
-        <div class="col-md-auto">
- <div class="slider-container">
-          <div
-            id="ks-start-2"
-            class="keen-slider"
-            style="height: 100px; width: 100px"
-          >
-            <div class="keen-slider__slide number-slide0">?</div>
-          </div></div></div>
-        <div class="col-md-auto">
- <div class="slider-container">
-          <div
-            id="ks-start-3"
-            class="keen-slider"
-            style="height: 100px; width: 100px"
-          >
-            <div class="keen-slider__slide number-slide0">?</div>
-          </div></div></div></div>
+    <div id="app">
+      <div class="doors">
+        <div class="door">
+          <div class="boxes">
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
 
-      <div class="row justify-content-center text-center"><div class="col-6"><div class="displaybuttons pt-4">
-        <button id="spinner">Spin</button>
-        <button id="reseter">Reset</button>
-      </div></div></div>
+        <div class="door">
+          <div class="boxes">
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
+
+        <div class="door">
+          <div class="boxes">
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center text-center">
+        <button id="spinner" class="btn btn-success">Spin</button>
+        <button id="reseter" class="btn btn-danger">Reset game</button>
+      </div>
 
     
     </div>
