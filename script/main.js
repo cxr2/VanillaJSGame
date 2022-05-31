@@ -20,7 +20,7 @@ function randomArrGenerator(min = 0, max = 9, length = 3) {
   return arr;
 }
 
-const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 // const shuffled = shuffle(numbers);
 
 // When player == true ==> player1's turn false ==> player2's turn
@@ -62,7 +62,7 @@ function shuffle([...arr]) {
 
 // Generate slider slides and appends them to target element programmatically
 function slideGenerator(content = numbers, targetElement) {
-  let slideNumber = 1;
+  let slideNumber = 0;
   const frag = new DocumentFragment();
   for (const item of content) {
     const div = document.createElement("div");
@@ -81,7 +81,7 @@ function slideGenerator(content = numbers, targetElement) {
     slideNumber += 1;
   }
 
-  targetElement.appendChild(frag);
+  targetElement.replaceChildren(frag);
 }
 
 function randomSlideGenerator(array = numbers, targetElement) {
@@ -91,13 +91,13 @@ function randomSlideGenerator(array = numbers, targetElement) {
 
 // Create slider_1_2 slides
 const player1_slider1 = document.getElementById("ks-player1-1");
-randomSlideGenerator(numbers, player1_slider1);
+slideGenerator(numbers, player1_slider1);
 
 const player1_slider2 = document.getElementById("ks-player1-2");
-randomSlideGenerator(numbers, player1_slider2);
+slideGenerator(numbers, player1_slider2);
 
 const player1_slider3 = document.getElementById("ks-player1-3");
-randomSlideGenerator(numbers, player1_slider3);
+slideGenerator(numbers, player1_slider3);
 
 /// create the slider 1_1
 const slider_1_1 = new keenSlider("#ks-player1-1", {
@@ -393,13 +393,13 @@ ks_player1_all_full_roll.addEventListener("click", () => {
 
 //**  Generate Player 2 Slides **/
 const player2_slider1 = document.getElementById("ks-player2-1");
-randomSlideGenerator(numbers, player2_slider1);
+slideGenerator(numbers, player2_slider1);
 
 const player2_slider2 = document.getElementById("ks-player2-2");
-randomSlideGenerator(numbers, player2_slider2);
+slideGenerator(numbers, player2_slider2);
 
 const player2_slider3 = document.getElementById("ks-player2-3");
-randomSlideGenerator(numbers, player2_slider3);
+slideGenerator(numbers, player2_slider3);
 
 // ***** Player 2 Sliders
 /// create the slider 1_1
