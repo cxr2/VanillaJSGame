@@ -7,7 +7,134 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  background-color: #b7b9b8 !important;
 }
+
+h1 {
+  font-family: "Neonderthaw", cursive;
+  color: gold !important;
+  font-size: 5em !important;
+  text-shadow: 3px 3px 6px goldenrod;
+}
+
+.spintoplay {
+  background-color: black;
+  color: white;
+  width: 600px;
+}
+h4 {
+  text-transform: uppercase;
+  font-family: "Alfa Slab One", cursive !important;
+  letter-spacing: 3px;
+}
+
+.players .col-4 {
+  border-radius: 15px;
+  width: 200px;
+  box-shadow: inset 2px 1px 10px rgba(0, 0, 0, 0.9);
+  text-transform: uppercase;
+  font-family: "Alfa Slab One", cursive !important;
+}
+
+/* BUTTONS + EFFECTS */
+
+.btn {
+  text-transform: uppercase;
+  font-family: "Alfa Slab One", cursive !important;
+  font-size: 1.1em !important;
+  border-radius: 100px !important;
+}
+
+.buttons {
+  margin: 8px 10px;
+}
+
+.buttons button {
+  background-color: #ededdf !important;
+  box-shadow: 1px 3px 2px 4px #a5a59c;
+  color: black !important;
+  border: none;
+  margin: 0 !important;
+  width: 108px;
+  height: 50px;
+  line-height: 15px;
+}
+
+.roll-all {
+  background-color: #ededdf !important;
+  box-shadow: 1px 3px 2px 4px #a5a59c;
+  color: green !important;
+  font-size: 1.4em !important;
+  border: none !important;
+}
+
+#spinner {
+  background-color: #ededdf;
+  box-shadow: 1px 3px 2px 4px #a5a59c;
+  display: block;
+  margin: 0 auto;
+  padding: 0.5em 0.8em;
+  font-size: 1.7em !important;
+  border: none;
+}
+
+#winner {
+  background-color: #ededdf;
+  box-shadow: 1px 3px 2px 4px #a5a59c;
+  padding: 0.6em 0.6em;
+  font-size: 1.3em !important;
+  border: none;
+}
+
+#reseter {
+  background-color: #ca1400;
+  color: black;
+
+  font-size: 1.1em !important;
+  letter-spacing: 2px;
+}
+
+@-webkit-keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.hvr-push {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-push:hover,
+.hvr-push:focus,
+.hvr-push:active {
+  -webkit-animation-name: hvr-push;
+  animation-name: hvr-push;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
 *,
 *::before,
 *::after {
@@ -31,12 +158,7 @@ body {
 }
 
 .door {
-  background: rgb(64, 255, 242);
-  background: linear-gradient(
-    128deg,
-    rgba(64, 255, 242, 1) 0%,
-    rgba(63, 188, 255, 1) 100%
-  );
+  background: white;
 
   width: 100px;
   height: 100px;
@@ -44,6 +166,7 @@ body {
 
   border-radius: 1ex;
   margin: 1ch;
+  box-shadow: inset 2px 1px 10px rgba(0, 0, 0, 0.9);
 }
 
 .boxes {
@@ -62,6 +185,8 @@ body {
   max-height: 150px;
 
   font-size: 3rem;
+  font-family: "Ultra", serif;
+  color: black;
 }
 
 .displaybuttons button {
@@ -96,6 +221,7 @@ body {
 
 .keen-slider {
   margin: 0 auto;
+  font-family: "Ultra", serif;
 }
 
 .player-1 {
@@ -124,19 +250,20 @@ button.btn {
 
 [class^="number-slide"],
 [class*=" number-slide"] {
-  background: grey;
+  background-color: white;
+  box-shadow: inset 2px 1px 10px rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  color: #fff;
+  color: black;
   font-weight: 500;
   height: 150px;
   max-height: 150px;
   font-size: 3rem;
   border-radius: 10px;
 }
-
+/* 
 .number-slide1 {
   background: rgb(64, 175, 255);
   background: linear-gradient(
@@ -233,4 +360,4 @@ button.btn {
     rgba(64, 255, 242, 1) 0%,
     rgba(63, 188, 255, 1) 100%
   );
-}
+} */

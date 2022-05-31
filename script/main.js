@@ -908,7 +908,7 @@ function init(firstInit = true, groups = 1, duration = 1) {
     const boxes = door.querySelector(".boxes");
     const boxesClone = boxes.cloneNode(false);
 
-    const pool = ["❓"];
+    const pool = ["?"];
     if (!firstInit) {
       const arr = [];
       for (let n = 0; n < (groups > 0 ? groups : 1); n++) {

@@ -22,10 +22,13 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Neonderthaw&family=Ultra&display=swap" rel="stylesheet">
   </head>
   <body>
-<div class="p-5 m-4">
-      <h1 class="text-center">Number Slots</h1>
+<div class="p-3 m-3">
+      <h1 class="text-center mb-4">Number Slots</h1>
 
     </section>
     <div id="app">
@@ -48,28 +51,40 @@
           </div>
         </div>
       </div>
-
+  <div class="spintoplay my-2"><h4 class="my-2 text-center">click spin to play</h4></div>
       <div class="row justify-content-center text-center">
         <div>
-          <button id="spinner" class="btn btn-dark" style="width: 45%;">Spin</button>
-          <button id="winner" type="button" class="btn btn-primary" style="width: 45%;">Who won?</button>
+          <button id="spinner" class="btn my-2 hvr-push" >Spin</button>
+          <button id="winner" type="button" class="btn my-2 hvr-push">Who won?</button>
         </div>
-        <button id="reseter" class="btn btn-light" style="width: 30%;">Reset</button>  
+        <button id="reseter" class="btn my-3">Reset</button>  
       </div>
 
     
     </div>
-  
-    <div class="row justify-content-center">
-      <div class='col-6'>
-        <h2 class="player1 text-center py-4">Player 1</h2>
+     <!-- <div class="row justify-content-center">
+      <div class="instructions col-md-auto">
+        <h2>Instructions</h2>
+        <ol class="rules p-4">
+          <li>Click spin to begin</li>
+          <li>Spend coins to try to to get close to the number</li>
+          <li>The player closest to the number wins</li>
+        </ol>
       </div>
-      <div class='col-6'>
-        <h2 class="player1 text-center py-4">Player 2</h2>
+    </div> -->
+  
+    <div class="row mb-3 players justify-content-around">
+      <div class='col-4'>
+        <h2 class="player1 text-center pt-2 ">Player 1</h2>
+      </div>
+      <div class='col-4'>
+        <h2 class="player2 text-center pt-2">Player 2</h2>
       </div>
     </div>
     <div class="row justify-content-center">
+      
       <div class="player-area player1 col-6 justify-content-center">
+    
         <div class="slider-container">
           <div
             id="ks-player1-1"
@@ -78,9 +93,10 @@
           >
             <div class="keen-slider__slide number-slide0">?</div>
           </div>
+        
           <div class="buttons">
-            <button id="ks-player1-1-full-roll" class="btn btn-success">Full Roll</button>
-            <button id="ks-player1-1-nudge" class="btn btn-warning nudge">Nudge</button>
+            <button id="ks-player1-1-full-roll" class="btn full-roll">$1 Full Roll</button>
+            <button id="ks-player1-1-nudge" class="btn nudge">$2 Nudge</button>
           </div>
         </div>
 
@@ -94,8 +110,8 @@
           </div>
 
           <div class="buttons">
-            <button id="ks-player1-2-full-roll" class="btn btn-success">Full Roll</button>
-            <button id="ks-player1-2-nudge"  class="btn btn-warning nudge">Nudge</button>
+            <button id="ks-player1-2-full-roll" class="btn full-roll">$1 Full Roll</button>
+            <button id="ks-player1-2-nudge"  class="btn nudge">$2 Nudge</button>
           </div>
         </div>
         <div class="slider-container">
@@ -108,11 +124,11 @@
           </div>
 
           <div class="buttons">
-            <button id="ks-player1-3-full-roll" class="btn btn-success" >Full Roll</button>
-            <button id="ks-player1-3-nudge" class="btn btn-warning nudge">Nudge</button>
+            <button id="ks-player1-3-full-roll" class="btn full-roll" >$1 Full Roll</button>
+            <button id="ks-player1-3-nudge" class="btn nudge">$2 Nudge</button>
           </div>
         </div>
-        <button id="ks-player1-all-full-roll" class="btn btn-danger my-auto px-2 py-1">Roll All</button>
+        <button id="ks-player1-all-full-roll" class="btn my-auto px-2 py-1 roll-all">$1 Roll All</button>
       </div>
       <div class="player-area player2 col-6 justify-content-center">
         <div class="slider-container">
@@ -125,8 +141,8 @@
           </div>
 
           <div class="buttons">
-            <button id="ks-player2-1-full-roll" class="btn btn-success">Full Roll</button>
-            <button id="ks-player2-1-nudge" class="btn btn-warning nudge">Nudge</button>
+            <button id="ks-player2-1-full-roll" class="btn full-roll">$1 Full Roll</button>
+            <button id="ks-player2-1-nudge" class="btn nudge">$2 Nudge</button>
           </div>
         </div>
 
@@ -140,8 +156,8 @@
           </div>
 
           <div class="buttons">
-            <button id="ks-player2-2-full-roll" class="btn btn-success">Full Roll</button>
-            <button id="ks-player2-2-nudge" class="btn btn-warning nudge">Nudge</button>
+            <button id="ks-player2-2-full-roll" class="btn full-roll">$1 Full Roll</button>
+            <button id="ks-player2-2-nudge" class="btn nudge">$2 Nudge</button>
           </div>
         </div>
         <div class="slider-container">
@@ -154,30 +170,21 @@
           </div>
 
           <div class="buttons">
-            <button id="ks-player2-3-full-roll" class="btn btn-success">Full Roll</button>
-            <button id="ks-player2-3-nudge" class="btn btn-warning nudge">Nudge</button>
+            <button id="ks-player2-3-full-roll" class="btn full-roll">$1 Full Roll</button>
+            <button id="ks-player2-3-nudge" class="btn nudge">$2 Nudge</button>
           </div>
         </div>
-        <button id="ks-player2-all-full-roll"class="btn btn-danger my-auto px-2 py-1">Roll All</button>
+        <button id="ks-player2-all-full-roll"class="btn my-auto px-2 py-1 roll-all">$1 Roll All</button>
       </div>
     </div>
     <div class="row justify-content-center">
-              <div class='coinsremaining col-6'><h5 class="text-center py-4"><em><span id="p1-coins-remaining"></span></em> coins remaining</h5></div>
-            <div class='coinsremaining col-6'><h5 class="text-center py-4"><em><span id ="p2-coins-remaining"></span></em> coins remaining</h5></div></div>
+              <div class='coinsremaining col-6'><h3 class="text-center py-2"><em><span id="p1-coins-remaining"></span></em> coins remaining</h3></div>
+            <div class='coinsremaining col-6'><h3 class="text-center py-2"><em><span id ="p2-coins-remaining"></span></em> coins remaining</h3></div></div>
       <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
-    <div class="row justify-content-center">
-      <div class="instructions col-md-auto">
-        <h2>Instructions</h2>
-        <ol class="rules p-4">
-          <li>Click spin to begin</li>
-          <li>Spend coins to try to to get close to the number</li>
-          <li>The player closest to the number wins</li>
-        </ol>
-      </div>
-    </div>
+  
   </body>
 </html>
